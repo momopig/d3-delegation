@@ -17,8 +17,10 @@
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-delegation.js -- index.js",
     "test": "tape 'test/**/*-test.js'",
-    "prepublish": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js  && npm version patch",
-    "postpublish": "zip -j build/d3-delegation.zip -- LICENSE README.md build/d3-delegation.js build/d3-delegation.min.js"
+    "build": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js",
+    "zip": "zip -j build/d3-delegation.zip -- LICENSE README.md build/d3-delegation.js build/d3-delegation.min.js",
+    "prepublish": "npm version patch",
+    "postpublish": ""
   },
   "devDependencies": {
     "npm-auto-version": "^1.0.0",
