@@ -17,7 +17,7 @@
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-delegation.js -- index.js",
     "test": "tape 'test/**/*-test.js'",
-    "prepublish": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js  && git add . && git commit -m 'add new version' && npm version patch",
+    "prepublish": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js  && npm version patch",
     "postpublish": "zip -j build/d3-delegation.zip -- LICENSE README.md build/d3-delegation.js build/d3-delegation.min.js"
   },
   "devDependencies": {
