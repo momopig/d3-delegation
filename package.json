@@ -1,6 +1,6 @@
 {
   "name": "d3-delegation",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "{DESCRIPTION}",
   "keywords": [
     "d3",
@@ -17,15 +17,17 @@
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-delegation.js -- index.js",
     "test": "tape 'test/**/*-test.js'",
-    "prepublish": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js",
-    "postpublish": "zip -j build/d3-delegation.zip -- LICENSE README.md build/d3-delegation.js build/d3-delegation.min.js"
+    "prepublish": "npm run test && uglifyjs build/d3-delegation.js -c -m -o build/d3-delegation.min.js && npm-auto-version",
+    "postpublish": "zip -j build/d3-delegation.zip -- LICENSE README.md build/d3-delegation.js build/d3-delegation.min.js && git add package.json && git commit -m {version} && git push origin --tags"
   },
   "devDependencies": {
+    "npm-auto-version": "^1.0.0",
     "rollup": "0.27",
     "tape": "4",
     "uglify-js": "2"
   },
   "dependencies": {
+    "d3-delegation": "^0.0.1",
     "d3-selection": "^1.4.0"
   }
 }
