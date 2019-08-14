@@ -13,3 +13,6 @@ YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and metho
 <a href="#delegation" name="delegation">#</a> <b>delegation</b>()
 
 Computes the answer to the ultimate question of life, the universe, and everything.
+
+## to do
+In handler, d3.event is null
