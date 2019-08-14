@@ -1,18 +1,34 @@
 # d3-delegation
 
-YOUR DESCRIPTION HERE. Replace all instances of `delegation` in this file with the name of your new plugin.
-
+An implementation of event delegation in d3
 ## Installing
+`npm i --save d3-delegation`
+or
+`yarn add d3-delagation`
 
-If you use NPM, `npm install d3-delegation`. Otherwise, download the [latest release](https://github.com/d3/d3-delegation/releases/latest).
+## method
 
-## API Reference
+### delegateEvent()
+| param | description | type | default |
+| --- | --- | --- | --- |
+| parentSelector | A parent svg element or a string containing a selector expression to match parent svg element | Element or String | undefined |
+| childSelector | A string containing a selector expression to match child svg elements | String | undefined |
+| events | events Such as 'click contextmenu' | String | undefined |
+| handler(event, $target) | A function to execute when the event of childDom is triggered. Return two values, $target is a d3 element ojbect | String | undefined |
+| inverseHandler(event, $target) | A function to execute when the event of childDom is not triggered but the event of parentDom is triggered | String | undefined |
+## usage
+```
+import { delegateEvent } from 'd3-delegation'
+delegateEvent(this.svg, '.edge, .node', 'click contextmenu', function(event, $target) {
+    event.preventDefault()
+    this.contextmenu.show()
+  }, function(event, $target) {
+    this.contextmenu.hide()
+  }
+))
+```
 
-YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and method names) and italics for instances. See the other D3 modules for examples.
-
-<a href="#delegation" name="delegation">#</a> <b>delegation</b>()
-
-Computes the answer to the ultimate question of life, the universe, and everything.
+## demo
 
 ## to do
 In handler, d3.event is null
