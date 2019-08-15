@@ -18,32 +18,45 @@ or
 | inverseHandler(event, $target) | A function to execute when the event of childDom is not triggered but the event of parentDom is triggered | String | undefined |
 ## usage
 ```
-import React, { Fragment } from 'react'
-import './component.scss'
-import { delegateEvent } from 'd3-delegation'
+import React from "react";
+import ReactDOM from "react-dom";
+import { delegateEvent } from "d3-delegation";
+import "./styles.scss";
+
 class D3Delegation extends React.Component {
   componentDidMount() {
-    delegateEvent(this.svg, 'rect, circle', 'click', function(event, $target) {
-      window.alert($target.attr('color'))
-    }, function(event, $target) {
-      window.alert('click the blank area')
-    })
+    delegateEvent(
+      this.svg,
+      "rect, circle",
+      "click",
+      function(event, $target) {
+        window.alert("the color is:" + $target.attr("color"));
+      },
+      function(event, $target) {
+        window.alert("the target is not a rect, you click the blank area");
+      }
+    );
   }
-  render () {
+  render() {
     return (
-      <div className='D3Delegation-component'>
-        <svg
-          ref={ svg => this.svg = svg }
-        >
-          <rect x="0" y="0" color="blue" width="300" height="100"  />
-          <rect x="300" y="300" color="red" width="300" height="100"  />
+      <div className="D3Delegation-component">
+        Delegate the click event listener of rect elements to the root svg
+        element.
+        <br />
+        Click the rect will show its color.
+        <svg ref={svg => (this.svg = svg)}>
+          <rect x="200" y="200" color="blue" width="100" height="100" />
+          <rect x="300" y="300" color="red" width="100" height="100" />
+          <circle cx="500" cy="200" r="40" color="green" stroke-width="3" />
         </svg>
       </div>
-    )
+    );
   }
 }
 
-export default D3Delegation
+const rootElement = document.getElementById("root");
+ReactDOM.render(<D3Delegation />, rootElement);
+
 ```
 
 ## demo
