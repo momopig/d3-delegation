@@ -14,8 +14,8 @@ or
 | parentSelector | A parent svg element or a string containing a selector expression to match parent svg element | Element or String | undefined |
 | childSelector | A string containing a selector expression to match child svg elements, such as '.edge, .node' | String | undefined |
 | events | Such as 'click contextmenu' | String | undefined |
-| handler(event, $target) | A function to execute when the event of childDom is triggered. Return two values, $target is a d3 element ojbect | String | undefined |
-| inverseHandler(event, $target) | A function to execute when the event of childDom is not triggered but the event of parentDom is triggered | String | undefined |
+| handler(event, $target) | A function to execute when the event of childDom is triggered. Return two values, $target is a d3 element ojbect | Function | undefined |
+| inverseHandler(event, $target) | A function to execute when the event of childDom is not triggered but the event of parentDom is triggered | Function | undefined |
 ## usage
 ```
 import React from "react";
